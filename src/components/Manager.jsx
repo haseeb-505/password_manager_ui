@@ -23,11 +23,18 @@ const Manager = () => {
     // http://localhost:5173/icons/eye.png
     // so we need to extract the path from this url
     const currentSrc = new URL(ref.current.src).pathname;
-    if (currentSrc === "/icons/cross-eye.png") {
-      ref.current.src = "/icons/eye.png";
+    console.log("\n\n pathname is: ", currentSrc);
+
+    // Construct correct paths dynamically
+    const eyeIcon = `${import.meta.env.BASE_URL}/icons/eye.png`;
+    const crossEyeIcon = `${import.meta.env.BASE_URL}/icons/cross-eye.png`;
+
+    if (currentSrc.endsWith("cross-eye.png")) {
+      console.log("hello");
+      ref.current.src = eyeIcon;
       passwordRef.current.type = "text";
     } else {
-      ref.current.src = "/icons/cross-eye.png";
+      ref.current.src = crossEyeIcon;
       passwordRef.current.type = "password";
     }
   };
@@ -124,7 +131,7 @@ const Manager = () => {
                   ref={ref}
                   className="p-1"
                   width={30}
-                  src="icons/eye.png"
+                  src={`${import.meta.env.BASE_URL}/icons/eye.png`}
                   alt="eye-icon"
                 />
               </span>
@@ -167,13 +174,15 @@ const Manager = () => {
                           {/* copy button */}
                           <button
                             onClick={() => {
-                              CopyToClipboard(item.password);
+                              CopyToClipboard(item.site);
                             }}
                             className="cursor-pointer bg-green-600 rounded-md justify-center items-center px-2 active:bg-green-800"
                           >
                             <img
                               className="w-5 py-1"
-                              src="/icons/copy_icon.png"
+                              src={`${
+                                import.meta.env.BASE_URL
+                              }/icons/copy_icon.png`}
                               alt="copy-icon"
                             />
                           </button>
@@ -185,13 +194,15 @@ const Manager = () => {
                           {/* copy button */}
                           <button
                             onClick={() => {
-                              CopyToClipboard(item.password);
+                              CopyToClipboard(item.username);
                             }}
                             className="cursor-pointer bg-green-600 rounded-md justify-center items-center px-2 active:bg-green-800"
                           >
                             <img
                               className="w-5 py-1"
-                              src="/icons/copy_icon.png"
+                              src={`${
+                                import.meta.env.BASE_URL
+                              }/icons/copy_icon.png`}
                               alt="copy-icon"
                             />
                           </button>
@@ -207,12 +218,12 @@ const Manager = () => {
                           <button onClick={() => showPasswordTable(index)}>
                             <img
                               className="w-7 cursor-pointer bg-green-600 rounded-lg py-1 px-1 active:bg-green-900"
-                              src={
+                              src={`${import.meta.env.BASE_URL}/icons/${
                                 visiblePassword[index]
-                                  ? "/icons/eye.png"
-                                  : "/icons/cross-eye.png"
-                              }
-                              alt="eye"
+                                  ? "eye.png"
+                                  : "cross-eye.png"
+                              }`}
+                              alt="toggle-password-visibility"
                               onClick={showPasswordTable}
                             />
                           </button>
@@ -225,7 +236,9 @@ const Manager = () => {
                           >
                             <img
                               className="w-5 py-1"
-                              src="/icons/copy_icon.png"
+                              src={`${
+                                import.meta.env.BASE_URL
+                              }/icons/copy_icon.png`}
                               alt="copy-icon"
                             />
                           </button>
@@ -238,7 +251,9 @@ const Manager = () => {
                           >
                             <img
                               className="w-5 py-1"
-                              src="/icons/delete_icon.png"
+                              src={`${
+                                import.meta.env.BASE_URL
+                              }/icons/delete_icon.png`}
                               alt="copy-icon"
                             />
                           </button>
