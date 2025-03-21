@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+
 // import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 const Manager = () => {
@@ -53,8 +55,29 @@ const Manager = () => {
     if (isEditing) {
       setIsEditing(false);
       // also pass the alert message to show password is updated
-      alert("Password is updated successfully!!!")
-    }
+      toast.success('Password edited successfully!!!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+    } else{
+            // pass the simple toast for saving password which in not being edited
+            toast.success('Your passowrd is saved!!!', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "dark",
+              });
+    };
   };
 
   // showPasswordTable
@@ -91,7 +114,16 @@ const Manager = () => {
     if (confirmDelete) {
       setPasswordArray(passwordArray.filter((val, i) => i !== index));
     }
-    alert("Passowrd record is deleted!!!")
+    toast.warn('Your password is deleted', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
   };
 
   // edit password
@@ -107,6 +139,7 @@ const Manager = () => {
     );
     // update the button status to Add Edited Password\
     setIsEditing(true);
+    
   };
 
   return (
@@ -332,6 +365,18 @@ const Manager = () => {
             </div>
           )}
         </div>
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
       </div>
     </>
   );
