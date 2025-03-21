@@ -113,17 +113,19 @@ const Manager = () => {
     );
     if (confirmDelete) {
       setPasswordArray(passwordArray.filter((val, i) => i !== index));
+      // toast here
+      toast.warn('Your password is deleted', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
     }
-    toast.warn('Your password is deleted', {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      });
+    
   };
 
   // edit password
