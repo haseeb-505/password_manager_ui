@@ -5,11 +5,10 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  
   plugins: [
     tailwindcss(),
     react()
   ],
-  base: "/password_manager_ui",
+  base: '/password_manager_ui/'
   
 })
