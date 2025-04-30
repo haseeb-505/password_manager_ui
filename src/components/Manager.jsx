@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { ToastContainer, toast } from 'react-toastify';
+import PasswordGenerator from "./PasswordGenerator";
 
 // import {CopyToClipboard} from 'react-copy-to-clipboard';
 
@@ -155,6 +156,9 @@ const Manager = () => {
         <p className="text-green-900 text-sm md:text-md lg:text-lg text-center">
           Your Own password manager
         </p>
+        <div>
+          <PasswordGenerator />
+        </div>
         <div className="flex flex-col p-4 text-black gap-4 items-center w-full">
           <div>
             { isEditing ? "Edit Your Password" : null}
