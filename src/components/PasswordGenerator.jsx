@@ -59,7 +59,7 @@ function PasswordGenerator() {
     
 
   return (
-    <div className='text-white bg-gray-500 text-center p-4 rounded-lg shadow-md my-4'>
+    <div className='text-white bg-gray-700 text-center p-4 rounded-lg shadow-md my-4'>
       <h1 className='text-xl font-bold'>Password Generator</h1>
       <div className=' flex justify-between rounded-lg my-2 gap-2 pl-2 text-black'>
         <input 
